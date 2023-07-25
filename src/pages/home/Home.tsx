@@ -1,14 +1,30 @@
-import React from 'react'
-import './Home.css'
-import homeLogo from '../../assets/login.jpg'
+
+import React, { useState, useEffect } from 'react'
+
 const Home = () => {
+  const [completed, setCompleted] = useState(false);
+  const [tarefa, setTarefa] = useState('');
+
+  useEffect(() => {
+    if (completed) {
+      setTarefa('Parabéns Tarefa concluida');
+    }
+  }, [completed])
+
+
+
+
   return (
-    <>
-    <h1 className='titulo'>Home</h1>
-    
-    <img src={homeLogo} className='img' alt="Imagem Login" />
-    </>
-    
+
+    <div>
+      <h1>Tarefa</h1>
+      <h3>{tarefa}</h3>
+      <p>Conclua a Tarefa</p>
+      <button onClick={() => setCompleted(true)}>Concluir Tarefa </button>
+
+    </div>
+
+
   )
 }
 
