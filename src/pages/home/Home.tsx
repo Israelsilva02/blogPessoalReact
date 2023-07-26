@@ -1,31 +1,24 @@
+import React, { useContext } from 'react';
 
-import React, { useState, useEffect } from 'react'
+import { UserContext } from '../../contexts/UseContext';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Home = () => {
-  const [completed, setCompleted] = useState(false);
-  const [tarefa, setTarefa] = useState('');
-
-  useEffect(() => {
-    if (completed) {
-      setTarefa('Parabéns Tarefa concluida');
-    }
-  }, [completed])
-
-
-
+function Home() {
+  const { nome, setNome } = useContext(UserContext);
 
   return (
-
-    <div>
-      <h1>Tarefa</h1>
-      <h3>{tarefa}</h3>
-      <p>Conclua a Tarefa</p>
-      <button onClick={() => setCompleted(true)}>Concluir Tarefa </button>
+    <div className='flex justify-center items-center'>
+      <div>
+        <h2 className="text-slate-900 text-5xl  my-4">Logar</h2>
+        <h2 className="text-slate-900 text-4xl ">Ola user : {nome}</h2>
+        <Link to="/login" className="my-4 rounded bg-indigo-400
+         hover:bg-indigo-900 text-white w-1/2 py-2 flex justify-center">
+          Voltar 
+        </Link>
+      </div>
 
     </div>
-
-
-  )
+  );
 }
 
-export default Home
+export default Home;
